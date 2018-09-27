@@ -14,7 +14,8 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    // first version
+
+// first version of the method ...
     // componentDidMount() {
     //     console.log('Mounted ...');
     //     database.ref().on('value', (snapshot) => {
@@ -27,6 +28,8 @@ class App extends Component {
 
     componentDidMount() {
         this.dataRef = database.ref('/ONE/TWO/THREE');
+// to make change one time - use ONCE
+        // this.dataRef.once('child_added', (snapshot) => {
         this.dataRef.on('child_added', (snapshot) => {
             console.log('Child added ...', snapshot.val());
             this.setState({
@@ -44,9 +47,9 @@ class App extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // to set one record - use SET
+// to set one record - use SET
         // database.ref().child("AAAA").set(this.state.newData);
-        // to add new record each time - use PUSH
+// to add new record each time - use PUSH
         // database.ref('/AAAA').push(this.state.newData);
         this.dataRef.push(this.state.newData);
     }
