@@ -11,6 +11,7 @@ class App extends Component {
             data: null,
             newData: ''
         };
+// React Tricks. Without this lines state didn`t render with newData
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -31,7 +32,6 @@ class App extends Component {
 // to make change one time - use ONCE
         // this.dataRef.once('child_added', (snapshot) => {
         this.dataRef.on('child_added', (snapshot) => {
-            console.log('Child added ...', snapshot.val());
             this.setState({
                 data: snapshot.val()
             });
@@ -65,7 +65,7 @@ class App extends Component {
                 </pre>
                 <form className="App--form" onSubmit={this.handleSubmit}>
                     <input type="text" onChange={this.handleChange} value={this.state.newData}/>
-                    <input type="submit" />
+                    <input type="submit"/>
                 </form>
             </div>
         );
