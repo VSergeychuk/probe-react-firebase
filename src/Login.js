@@ -63,9 +63,10 @@ export default class Login extends Component {
                         <input value={this.state.password} onChange={this.handleChange} type="password"
                                name="password"/>
                     </div>
-                    <button type="submit" onClick={this.login} style={{marginTop: '10px', paddingLeft: '80px'}}>Login
+                    <button type="submit" onClick={this.login} style={{marginTop: '10px', paddingRight: '40px'}}>Login
                     </button>
-                    <button onClick={this.signup} style={{marginLeft: '25px', paddingRight: '80px'}}>Signup</button>
+                    <button onClick={this.signup} style={{marginLeft: '25px', paddingRight: '20px'}}>Signup</button>
+                    <button onClick={window.close} style={{marginLeft: '25px', paddingRight: '40px'}}>Quit</button>
                 </form>
             </div>
         );
