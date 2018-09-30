@@ -15,11 +15,11 @@ export default class Login extends Component {
         };
     }
 
-    handleChange(e) {
-        this.setState({[e.target.name]: e.target.value});
+    handleChange(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
-    handleError(error){
+    handleError(error) {
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode === 'auth/wrong-password') {
@@ -30,8 +30,8 @@ export default class Login extends Component {
         }
     }
 
-    login(e) {
-        e.preventDefault();
+    login(event) {
+        event.preventDefault();
         auth.signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
             console.log('User ', u.user.email, ' successfully log in.',)
         }).catch((error) => {
@@ -39,10 +39,9 @@ export default class Login extends Component {
         });
     }
 
-    signup(e) {
-        e.preventDefault();
+    signup(event) {
+        event.preventDefault();
         auth.createUserWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
-        }).then((u) => {
             console.log('User ', u.user.email, ' successfully sign up.')
         }).catch((error) => {
             this.handleError(error);
